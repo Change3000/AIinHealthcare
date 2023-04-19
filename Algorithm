@@ -1,0 +1,122 @@
+EXPERT SYSTEM SOURCE CODE !
+ATTRIBUTE start SIMPLE
+ATTRIBUTE The patient suffer from any change in size or colour or shape or
+texture of a mole or other skin growth SIMPLE
+ATTRIBUTE The patient suffer from an open or inflamed skin wound that
+won't heal SIMPLE
+ATTRIBUTE The patient suffer from a change in an existing mole SIMPLE
+ATTRIBUTE The patient suffer from a small dark multi coloured spot with
+irregular borders either elevated or flat that may bleed and form a scab
+SIMPLE
+ATTRIBUTE The patient suffer from a cluster of shiny firm dark bumps
+SIMPLE ATTRIBUTE The patient suffer from a mole larger than a pencil
+eraser SIMPLE
+INSTANCE the domain ISA domain WITH start := TRUE
+INSTANCE the application ISA application
+WITH title display := introduction
+WITH conclusion display := Conc
+INSTANCE introduction ISA display
+WITH wait := TRUE
+WITH delay changes := FALSE
+WITH items [1 ] := textbox 1
+INSTANCE textbox 1 ISA textbox
+WITH location := 10,10,800,350
+WITH pen colour := 0,0,0
+WITH fill colour := 153,255,255
+WITH justify IS left
+WITH font := "Arial"
+WITH font style IS bold
+WITH font size := 14
+WITH text "=:
+This Expert System diagnoses Skin Cancer Problems through a dialogue
+between the System and the End User. The Conclusion of the finding is Skin
+Cancer and Advice is given for the End User to solve the problem".
+INSTANCE Conc ISA display
+WITH wait := TRUE
+WITH delay changes := FALSE
+WITH items [1] := title textbox
+WITH items [2 ] := problem textbox
+WITH items [3 ] := advise textbox
+INSTANCE title textbox ISA textbox
+WITH location := 20,10,800,70
+WITH pen colour := 0,0,0
+WITH fill colour := 102,255,179
+WITH justify IS centre
+WITH font := "Arial"
+WITH font style IS bold
+WITH font size := 14
+WITH text := " The Conclusion of the Skin Cancer Diagnosis Expert System"
+INSTANCE problem textbox ISA textbox
+WITH location := 20,110,800,130
+WITH pen colour := 0,0,0
+WITH fill colour := 179,255,179
+WITH justify IS left
+WITH font := "Arial"
+WITH font size := 14
+WITH text"--===-- "=:
+INSTANCE advise textbox ISA textbox
+WITH location := 20,280,800,130
+WITH pen colour := 0,0,0
+WITH fill colour := 179,255,179
+WITH justify IS left
+WITH font := "Arial"
+WITH font size := 14
+WITH text"--===-- "=:
+RULE R1
+IF start
+THEN ASK The patient suffers from any change in size or colour or shape or
+texture of a mole or other skin growth.
+RULE R2
+IF The patient suffer from any change in size or colour or shape or texture of
+a mole or other skin growth
+THEN ASK The patient suffer from an open or inflamed skin wound that
+won't heal
+RULE R3
+IF The patient suffer from any change in size or colour or shape or texture of
+a mole or other skin growth
+AND The patient suffer from an open or inflamed skin wound that won't
+heal
+THEN ASK The patient suffer from a change in an existing mole
+RULE R4
+IF The patient suffer from any change in size or colour or shape or texture of
+a mole or other skin growth
+AND The patient suffer from an open or inflamed skin wound that won't
+heal
+AND The patient suffer from a change in an existing mole
+THEN ASK The patient suffer from a small dark multi coloured spot with
+irregular borders either elevated or flat that may bleed and form a scab
+RULE R5
+IF The patient suffer from any change in size or colour or shape or texture of
+a mole or other skin growth
+AND The patient suffer from an open or inflamed skin wound that won't
+heal
+AND The patient suffer from a change in an existing mole
+AND The patient suffer from a small dark multi coloured spot with irregular
+borders either elevated or flat that may bleed and form a scab
+THEN ASK The patient suffer from a cluster of shiny firm dark bumps
+RULE R6
+IF The patient suffer from any change in size or colour or shape or texture of
+a mole or other skin growth
+AND The patient suffer from an open or inflamed skin wound that won't
+heal
+AND The patient suffer from a change in an existing mole
+AND The patient suffer from a small dark multi coloured spot with irregular
+borders either elevated or flat that may bleed and form a scab
+AND The patient suffer from a cluster of shiny firm dark bumps
+THEN ASK The patient suffer from a mole larger than a pencil eraser
+RULE R7
+IF The patient suffer from any change in size or colour or shape or texture of
+a mole or other skin growth
+AND The patient suffer from an open or inflamed skin wound that won't
+heal AND The patient suffer from a change in an existing mole
+AND The patient suffer from a small dark multi coloured spot with irregular
+borders either elevated or flat that may bleed and form a scab
+AND The patient suffer from a cluster of shiny firm dark bumps
+AND The patient suffer from a mole larger than a pencil eraser
+THEN text OF problem textbox := "The patient suffers from skin cancer".
+AND text OF advise textbox := "The Advice: Go to your doctor for the
+treatment CF 100%"
+ELSE text OF problem textbox := "The patient does not suffer from skin
+cancer".
+AND text OF advise textbox := "The Advice: Keep the good health"
+END
